@@ -3,11 +3,13 @@ using Application.Queries.Resturant.GetAllResturantWithAvailableTable;
 using Domain.Models.Request;
 using Domain.Models.Response;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Controllers.Controllers.Resturant;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class ResturantController : ControllerBase

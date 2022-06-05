@@ -6,6 +6,7 @@ using Domain.Models.Request.Authentication;
 using Domain.Models.Response;
 using Domain.Models.Response.Authentication;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Controllers.Controllers.Auth;
@@ -21,6 +22,7 @@ public class AuthController : ControllerBase
         _mediar = mediar;
     }
 
+    [Authorize]
     [HttpGet("users")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

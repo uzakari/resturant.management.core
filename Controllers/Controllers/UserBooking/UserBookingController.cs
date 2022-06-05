@@ -1,7 +1,6 @@
 ﻿using Application.Commands.UserBookings;
 using Domain.Models.Request;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Controllers.Controllers.UserBooking;

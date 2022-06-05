@@ -42,7 +42,7 @@ public class AuthenticationCommandHandler : IRequestHandler<AuthenticationComman
 
         jwtSecurityTokken = await GenerateToken(getResturantOwner);
 
-        return new LoginResponse(GetTokenString(jwtSecurityTokken), (int)(jwtSecurityTokken.ValidTo - DateTime.Now).TotalSeconds, ResturantConstants.TokenType);
+        return new LoginResponse(GetTokenString(jwtSecurityTokken), ExpiresIn(jwtSecurityTokken), ResturantConstants.TokenType);
 
     }
 
@@ -75,6 +75,11 @@ public class AuthenticationCommandHandler : IRequestHandler<AuthenticationComman
     private static string GetTokenString(JwtSecurityToken jwtSecurityTokken)
     {
         return new JwtSecurityTokenHandler().WriteToken(jwtSecurityTokken);
+    }
+
+    private static int ExpiresIn(JwtSecurityToken jwtSecurityTokken)
+    {
+        return (int)(jwtSecurityTokken.ValidTo - DateTime.Now).TotalSeconds;
     }
 
 }
