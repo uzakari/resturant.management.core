@@ -20,7 +20,7 @@ public class UserBookingProcessor : BackgroundService
             var scope = _serviceProvider.CreateScope();
             var subscriberServcie = scope.ServiceProvider.GetRequiredService<ISubscriberServcie>();
             await subscriberServcie.GetQueueMessageAndProcess();
-            await Task.Delay(100000, stoppingToken);
+            await Task.Delay(1000, stoppingToken);
         }
     }
 }
