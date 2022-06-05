@@ -49,7 +49,8 @@ public class AuthControllerTest : IClassFixture<CustomWebApplicationFactory<Prog
     [Fact]
     public async Task GetAllResturantOwner_Success()
     {
-        var resturantOwnerResponse = await _client.GetAsync("users");
+        var authClient = await _customWebApplicationFactory.GetAuthClient();
+        var resturantOwnerResponse = await authClient.GetAsync("users");
         resturantOwnerResponse.EnsureSuccessStatusCode();
 
         var respnseContent = await resturantOwnerResponse.Content.ReadAsStringAsync();

@@ -56,7 +56,8 @@ public class ResturantControllerTest : IClassFixture<CustomWebApplicationFactory
             }
         };
 
-        var resturantOwnerCreationResponse = await _client.PostAsJsonAsync("create", inputPayload);
+        var authClient = await _customWebApplicationFactory.GetAuthClient();
+        var resturantOwnerCreationResponse = await authClient.PostAsJsonAsync("create", inputPayload);
         resturantOwnerCreationResponse.EnsureSuccessStatusCode();
 
         var responseContent = await resturantOwnerCreationResponse.Content.ReadAsStringAsync();

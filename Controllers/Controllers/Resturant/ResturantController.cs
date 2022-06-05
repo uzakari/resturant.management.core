@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Controllers.Controllers.Resturant;
 
-[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class ResturantController : ControllerBase
@@ -30,7 +29,7 @@ public class ResturantController : ControllerBase
         return Ok(await _mediator.Send(new GetAllResturantWithAvailableTableQuery()));
     }
 
-
+    [Authorize]
     [HttpPost("create")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
